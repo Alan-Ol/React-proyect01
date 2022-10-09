@@ -1,0 +1,31 @@
+.card{
+    width: 200px;
+    height: 310px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: rgb(215, 215, 215);
+    box-shadow: 5px 3px 15px rgb(122, 121, 121);
+}
+
+.card img{
+    width: 100%;
+}
+.card-description{
+    padding: 10px;
+}
+.card-description h3{
+    font-weight: 700;
+}
+.card-description p{
+    margin-top: 3px;
+    font-weight: 300;
+    font-size: 13px;
+}
+.container-page{
+    height: 100vh;
+    display: flex;
+    gap: 80px;
+    background-color: rgb(212, 212, 212);
+    justify-content: center;
+    align-items: center;
+}
