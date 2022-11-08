@@ -1,25 +1,24 @@
-import CardWidget from "../components/CardWidget"
-import "../style/nav.css"
+import React from 'react';
+import CartWidget from './CartWidget';
+import { Link, NavLink } from 'react-router-dom';
+import "../style/navbar.css"
 
 const Navbar = () => {
-    return(
-        <>
-        <div className="menu">
-            <a href="https://plataforma.coderhouse.com/cursos/44590/reactjs" className="menu-icon">COMERCIO</a>
-            <div className="menu-item">
+        return (
+            <nav>
+                <Link to="/" className={"icon"}>NIKE</Link>
                 <ul>
-                    <li><a href="https://plataforma.coderhouse.com/cursos/44590/reactjs">DEPORTIVAS</a></li>
-                    <li><a href="https://plataforma.coderhouse.com/cursos/44590/reactjs">BOTINES</a></li>
-                    <li><a href="https://plataforma.coderhouse.com/cursos/44590/reactjs">MODA</a></li>
-                    <CardWidget/>
+                    <NavLink to="/category/basket" className={"nav__link"}>BASKET</NavLink>
+
+                    <Link to="/category/moda" className={"nav__link"}>MODA</Link>
+
+                    <Link to="/category/deportiva" className={"nav__link"}>DEPORTIVA</Link>
                 </ul>
-            </div>
+                <Link to="/cart">
+                    <CartWidget />
+                </Link>
+            </nav>
+        );    
+};
 
-        </div>
-
-        </>
-    )
-    
-}
-
-export default Navbar
+export default Navbar;

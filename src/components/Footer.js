@@ -1,11 +1,11 @@
-import "../style/footer.css"
+import "../style/main.css"
 
-const Footer = () =>{
+const Footer = () => {
     return (
-        <div className="footer">
-            <p>React-CoderHouse</p>
-        </div>
-    )
-}
+        <footer>
+            <p>Alan Olmedo-React</p>
+        </footer>
+    );
+};
 
-export default Footer
+export default Footer;
