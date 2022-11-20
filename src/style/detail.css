@@ -32,3 +32,22 @@
     font-size: 25px;
     color: red;
 }
+
+.cart-link{
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 900;
+    color: white;
+    margin-top: 20px;
+    border: 1px solid white;
+    padding: 10px;
+    transition: 0.5s;
+}
+.cart-link:hover{
+    color: red;
+    border: 1px solid red;
+}
+
+.shop{
+    margin-right: 15px;
+}

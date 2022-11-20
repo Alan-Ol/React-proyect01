@@ -2,7 +2,9 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../CartContext';
 import Form from './Form';
+import {BiHomeSmile} from "react-icons/bi"
 import CartDetail from './CartDetail';
+import "../style/product.css"
 
 const Cart = () => {
     const [idCompra, setIdCompra] = useState('');
@@ -20,17 +22,21 @@ const Cart = () => {
 
     if (cart.length === 0) {
         return (
-            <h1>
-                Aún no tenés productos, podés ir al <Link to="/">Home</Link>{' '}
-                para buscar algún producto
-            </h1>
+            <div className='product'>
+                <Link to="/"><BiHomeSmile className='icon-shop'/></Link>
+                <h3>No hay ningun producto en el carrito</h3>
+            </div>
+
         );
     }
 
     return (
-        <div>
+        <div className='carrito'>
             {cart.map((prod) => (
+            <div className='prod-item'>
                 <CartDetail key={prod.id} prod={prod} deleteOne={deleteOne} />
+            </div>
+                
             ))}
 
             <button onClick={clearCart}>Clear Cart</button>

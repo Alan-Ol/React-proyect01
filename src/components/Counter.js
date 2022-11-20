@@ -29,8 +29,8 @@ const Counter = ({ stock, onAdd, initial = 1 }) =>{
         <div className='btn-detail'>
             <p>Cantidad: {count} </p>
             <div className='btn-count'>
-                <button  onClick ={sumar}>+</button>
                 <button  onClick ={restar}>-</button>
+                <button  onClick ={sumar}>+</button>
             </div>
             <button onClick ={agregarAlCarrito} className="btn-shop"> Agregar al carrito</button>
             {/* <Toaster

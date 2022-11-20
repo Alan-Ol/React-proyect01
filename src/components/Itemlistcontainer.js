@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { collection, getDocs, query, where } from 'firebase/firestore';
-import ClipLoader from 'react-spinners/ClipLoader';
+import PulseLoader from 'react-spinners/PulseLoader';
 import {db} from "../firebaseConfig"
 import ItemList from './ItemList';
 import "../style/card.css"
@@ -40,9 +40,9 @@ const ItemListContainer = () => {
     return (
         <div>
             {isLoading ? (
-                <>
-                    <ClipLoader color="black" size={150} />
-                </>
+                <div className='loader'>
+                    <PulseLoader color="red" size={50}/>
+                </div>
             ) : (
                 <>
                     <ItemList items={items}/>

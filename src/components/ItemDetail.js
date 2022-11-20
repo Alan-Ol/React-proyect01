@@ -3,6 +3,7 @@ import Counter from "../components/Counter"
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { CartContext } from '../CartContext';
+import {BiHomeSmile} from "react-icons/bi"
 import "../style/detail.css"
 
 const ItemDetail = ( {item} ) => {
@@ -31,13 +32,14 @@ const ItemDetail = ( {item} ) => {
                         onAdd = {onAdd}
                     />
                 ) : (
+                    <>
+                        <Link to ="/cart" className='cart-link'><BiHomeSmile className='shop'/>Ir al carrito</Link>
+                        <Link to ="/" className='cart-link'>Seguir comprando</Link>
+                    </>
                     
-                    <Link to ="/cart">Ir al carrito</Link>
                 )}
 
             </div>
-
-
         </div>
     )
 };

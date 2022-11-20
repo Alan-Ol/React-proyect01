@@ -6,7 +6,6 @@ const CartWidget = () => {
     return (
         <div className='shop-icon'>
             <BiShoppingBag/>
-            <span>0</span>
         </div>
     );
 };

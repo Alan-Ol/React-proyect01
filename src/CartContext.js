@@ -49,10 +49,10 @@ const CartProvider = ({ children }) => {
         let acumulador = 0;
         const copia = [...cart]
         copia.forEach((prod) => {
-            acumulador += prod.cantidad * prod.price;
+            acumulador += prod.stock * prod.price;
         });
         return acumulador;
-    };
+    }; 
 
     const deleteOne = (id) => {
         const filteredProducts = cart.filter((prod) => prod.id !== id);
