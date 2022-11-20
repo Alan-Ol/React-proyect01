@@ -1,35 +1,78 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { products } from '../Products/products';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import ClipLoader from 'react-spinners/ClipLoader';
+import {db} from "../firebaseConfig"
 import ItemList from './ItemList';
 import "../style/card.css"
 
 const ItemListContainer = () => {
     const [items, setItems] = useState([]);
     const { categoryName } = useParams();
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const getProducts = () =>
-            new Promise((res, rej) => {
-                const prodFiltrados = products.filter(
-                    (prod) => prod.category === categoryName
-                );
-                setTimeout(() => {
-                    res(categoryName ? prodFiltrados : products);
-                }, 500);
-            });
+        setIsLoading(true);
+        const itemCollection = collection(db, "productos");
 
-        getProducts()
-            .then((data) => {
-                setItems(data);
+        const referencia = categoryName
+            ? query(itemCollection, where('category', '==', categoryName))
+            : itemCollection;
+
+        getDocs(referencia)
+            .then((res) => {
+                const products = res.docs.map((prod) => {
+                    return {
+                        id: prod.id,
+                        ...prod.data(),
+                    };
+                });
+                setItems(products);
             })
             .catch((error) => {
                 console.log(error);
+            })
+            .finally(() => {
+                setIsLoading(false);
             });
     }, [categoryName]);
 
-    return (<ItemList items={items}/>);
+    return (
+        <div>
+            {isLoading ? (
+                <>
+                    <ClipLoader color="black" size={150} />
+                </>
+            ) : (
+                <>
+                    <ItemList items={items}/>
+                </>
+            )}
+        </div>
+    )
+
+        
+
 };
 
 export default ItemListContainer;
+
+
+// const getProducts = () =>
+// new Promise((res, rej) => {
+//     const prodFiltrados = products.filter(
+//         (prod) => prod.category === categoryName
+//     );
+//     setTimeout(() => {
+//         res(categoryName ? prodFiltrados : products);
+//     }, 500);
+// });
+
+// getProducts()
+// .then((data) => {
+//     setItems(data);
+// })
+// .catch((error) => {
+//     console.log(error);
+// });
 
