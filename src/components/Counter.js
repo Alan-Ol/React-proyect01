@@ -1,5 +1,5 @@
 import React , { useState } from 'react'
-// import  { Toaster, toast } from 'react-hot-toast';
+
 import { useEffect } from 'react';
 import "../style/button.css"
 
@@ -33,9 +33,6 @@ const Counter = ({ stock, onAdd, initial = 1 }) =>{
                 <button  onClick ={sumar}>+</button>
             </div>
             <button onClick ={agregarAlCarrito} className="btn-shop"> Agregar al carrito</button>
-            {/* <Toaster
-                position='bottom-left'
-            /> */}
         </div>
     )
 }
@@ -44,4 +41,3 @@ const Counter = ({ stock, onAdd, initial = 1 }) =>{
 export default Counter
 
 
-// () => toast.success('Agregado al carrito')

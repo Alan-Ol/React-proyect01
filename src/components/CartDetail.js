@@ -3,6 +3,7 @@ import "../style/carrito.css"
 
 
 const CartDetail = ({ prod, deleteOne }) => {
+
     return (
                 <div className='item'>
                     <img src={prod.img} alt={prod.title} className="img-item"/>

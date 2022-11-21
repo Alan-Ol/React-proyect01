@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../CartContext';
 import Form from './Form';
+import {BiCheckCircle} from "react-icons/bi"
 import {BiHomeSmile} from "react-icons/bi"
 import CartDetail from './CartDetail';
 import "../style/product.css"
@@ -17,7 +18,11 @@ const Cart = () => {
     };
 
     if (idCompra) {
-        return <h1>Gracias por comprar tu id es: {idCompra}</h1>;
+        return <div className='clean-shop'>
+                <BiCheckCircle className='clean-icon'/>
+                <p>Gracias por tu compra, tu id de producto es: <br/> <span>{idCompra}</span> </p>
+                <Link to="/" className='btn'>Volver al inicio</Link>
+            </div>;
     }
 
     if (cart.length === 0) {
@@ -38,9 +43,12 @@ const Cart = () => {
             </div>
                 
             ))}
+            <div className='price'>
+                <h4><span>Total:</span> ${total}</h4>
+                <button onClick={clearCart} className="btn">Clear Cart</button>
+            </div>
 
-            <button onClick={clearCart}>Clear Cart</button>
-            <h4>Total: ${total}</h4>
+
             <Form
                 cart={cart}
                 total={total}

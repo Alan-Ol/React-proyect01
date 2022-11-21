@@ -65,7 +65,7 @@ const CartProvider = ({ children }) => {
 
     const getProductQuantity = (id) => {
         const product = cart.find((prod) => prod.id === id);
-        return product?.cantidad;
+        return product?.stock;
     };
 
     useEffect(() => {

@@ -7,6 +7,8 @@ import {
 } from 'firebase/firestore';
 import React, { useState } from 'react';
 import { db } from '../firebaseConfig';
+import  { Toaster, toast } from 'react-hot-toast';
+import "../style/form.css"
 
 const Form = ({ cart, total, clearCart, handleId }) => {
     const [nombre, setNombre] = useState('');
@@ -44,13 +46,15 @@ const Form = ({ cart, total, clearCart, handleId }) => {
         setApellido(event.target.value);
     };
 
+
     return (
-        <div>
+        <div className='formulario'>
             <form action="" onSubmit={handleSubmit}>
                 <input
                     type="text"
                     placeholder="Nombre..."
                     name="nombre"
+                    required
                     value={nombre}
                     onChange={handleChangeNombre}
                 />
@@ -59,9 +63,14 @@ const Form = ({ cart, total, clearCart, handleId }) => {
                     placeholder="Apellido..."
                     name="apellido"
                     value={apellido}
+                    required
                     onChange={handleChangeApellido}
                 />
-                <button>Enviar</button>
+                
+                <button className='btn' onClick={() => toast.success('Realizaste la compra con exito')}>Enviar</button>
+                <Toaster
+                position='bottom-left'
+                 />
             </form>
         </div>
     );
